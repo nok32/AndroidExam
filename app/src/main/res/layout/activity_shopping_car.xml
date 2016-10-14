@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/activity_shopping_car"
+    android:padding="10dp">
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/shoppingCarRecyclerViewId"
+        android:clipToPadding="false"
+        android:paddingBottom="20dp"
+        android:layout_marginBottom="120dp"
+        android:orientation="vertical">
+    </android.support.v7.widget.RecyclerView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:gravity="bottom"
+        android:elevation="0dp"
+        android:background="#FFFFFF"
+        android:padding="15dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@android:drawable/stat_sys_phone_call_forward"
+                android:background="#a483d20b"
+                android:text="Call"
+                android:id="@+id/btnCall"
+                android:layout_marginRight="5dp"
+                android:padding="2dp"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@android:drawable/ic_menu_mylocation"
+                android:layout_marginLeft="50dp"
+                android:padding="2dp"
+                android:background="#a483d20b"
+                android:text="Map"
+                android:id="@+id/btnOpenMap"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_width="232dp"
+                android:layout_height="wrap_content"
+                android:background="#a4cc310e"
+                android:text="Make Order"
+                android:id="@+id/btnShoppingCarOrder"
+                android:textAlignment="center"
+                android:textStyle="normal|bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1003$"
+                android:textAlignment="center"
+                android:gravity="right"
+                android:foregroundGravity="right"
+                android:layout_weight="0.83"
+                android:textSize="30dp"
+                android:id="@+id/shoppingCarOrderPrice"
+                android:textStyle="normal|bold" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/menuLogin"
+        android:title="Login"
+        android:visible="true"
+        android:icon="@android:drawable/stat_sys_phone_call"
+        android:showAsAction="ifRoom" />
+    <item android:id="@+id/menuRegister"
+        android:icon="@mipmap/ic_launcher"
+        android:title="Register"
+        />
+    <item android:id="@+id/menuCart"
+        android:icon="@mipmap/ic_launcher"
+        android:title="Go to Cart"
+        />
+    <item android:id="@+id/menuLogOut"
+        android:icon="@drawable/ic_menu_camera"
+        android:title="Log Out"
+        />
+    <item
+        android:id="@+id/checkable_menu"
+        android:checkable="true"
+        android:title="Dinner reminder"
+    />
+</menu>

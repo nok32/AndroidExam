@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/food_fragment_background"
+    android:isScrollContainer="true">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:id="@+id/foodFragmentFoodImage"
+        android:src="@mipmap/category_meat"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/foodFragmentFoodTitle"
+            android:textSize="30dp"
+            android:text="Food Title"
+            android:fontFamily="casual"
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/foodFragmentFoodInfo"
+            android:textSize="18dp"
+            android:text="Food Info"
+            android:fontFamily="casual"
+            android:textStyle="italic"
+                android:textColor="@color/colorBlack"/>
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:id="@+id/radioGroupPortion">
+
+            <RadioButton
+                    android:text="@string/portion_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/foodFragmentFoodregular"
+                    android:checked="true" />
+
+            <RadioButton
+                android:text="@string/portion_large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/foodFragmentFoodLarge"
+                android:checked="false" />
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <Button
+        android:text="Add to cart"
+        android:textColor="@color/colorBlack"
+        android:textSize="20sp"
+        android:fontFamily="cursive"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:background="@drawable/btn_add_to_cart_background"
+        android:shadowColor="#A82020"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        android:id="@+id/foodFragmentAddToOrderBtn"/>
+
+</LinearLayout>
+
+</ScrollView>
