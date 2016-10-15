@@ -49,7 +49,7 @@ public class EatService extends Service {
         Intent iSupper = new Intent(getApplicationContext(), NotificationReceiverSupper.class);
         iSupper.setAction("SUPPER");
 
-        setLunchType(8 - TIME_ZONE_DIFFERENCE, iBreakfast);
+        setLunchType(8, iBreakfast);
         setLunchType(12, iLunch);
         setLunchType(19, iSupper);
 
@@ -67,7 +67,7 @@ public class EatService extends Service {
         Calendar firingCal= Calendar.getInstance();
         Calendar currentCal = Calendar.getInstance();
 
-        firingCal.set(Calendar.HOUR_OF_DAY, hour);
+        firingCal.set(Calendar.HOUR_OF_DAY, hour - TIME_ZONE_DIFFERENCE);
         firingCal.set(Calendar.MINUTE, 0);
         firingCal.set(Calendar.SECOND, 0);
 
