@@ -28,7 +28,11 @@ public class User extends SugarRecord implements Parcelable {
     }
 
     public void set_userName(String _userName) {
-        this._userName = _userName;
+        if (_userName.length() < 2){
+            throw new IllegalArgumentException("Username must be at least two symbols!");
+        }else{
+            this._userName = _userName;
+        }
     }
 
     public String get_password() {
@@ -36,7 +40,11 @@ public class User extends SugarRecord implements Parcelable {
     }
 
     public void set_password(String _password) {
-        this._password = _password;
+        if (_password.length() < 2){
+            throw new IllegalArgumentException("The password must be at least two symbols!");
+        }else{
+            this._password = _password;
+        }
     }
 
     public ShoppingCar get_car() {

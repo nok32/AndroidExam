@@ -27,6 +27,7 @@ public class ShoppingCarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_car);
+        setTitle("Shopping Car");
 
         mShoppingCarController = new ShoppingCarController(this);
 

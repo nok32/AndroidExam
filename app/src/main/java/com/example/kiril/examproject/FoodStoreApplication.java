@@ -2,11 +2,13 @@ package com.example.kiril.examproject;
 
 import android.app.Application;
 import android.content.ContextWrapper;
+import android.content.Intent;
 
 import com.example.kiril.examproject.authorization.LoginManager;
 import com.example.kiril.examproject.models.Category;
 import com.example.kiril.examproject.models.ShoppingCar;
 import com.example.kiril.examproject.models.User;
+import com.example.kiril.examproject.services.EatService;
 import com.facebook.appevents.AppEventsLogger;
 import com.orm.SugarContext;
 import com.facebook.FacebookSdk;
@@ -21,6 +23,7 @@ public class FoodStoreApplication extends Application {
     private LoginManager mLoginManager = new LoginManager();
     private boolean isChecked = true;
     private boolean isServiceRunning = false;
+    private Intent mEatServiceIntent;
 
     private void initDbWithCategories(){
         Category pizza = new Category("Pizza", "Best pizza in the world.", R.mipmap.category_pizza);
@@ -51,6 +54,12 @@ public class FoodStoreApplication extends Application {
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(this);
 
+
+        mEatServiceIntent = new Intent(this, EatService.class);
+        if (isChecked() && ! isServiceRunning()){
+            startService(mEatServiceIntent);
+            setServiceRunning(true);
+        }
         //if (doesDatabaseExist(this, "db_foods_store.db")){
         //    SugarDb db = new SugarDb(getApplicationContext());
 //
@@ -105,5 +114,13 @@ public class FoodStoreApplication extends Application {
 
     public void setServiceRunning(boolean serviceRunning) {
         isServiceRunning = serviceRunning;
+    }
+
+    public Intent getEatServiceIntent() {
+        return mEatServiceIntent;
+    }
+
+    public void setEatServiceIntent(Intent mEatServiceIntent) {
+        this.mEatServiceIntent = mEatServiceIntent;
     }
 }

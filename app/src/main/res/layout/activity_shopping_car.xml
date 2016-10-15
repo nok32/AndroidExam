@@ -49,7 +49,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@android:drawable/ic_menu_mylocation"
-                android:layout_marginLeft="50dp"
+                android:layout_marginLeft="1dp"
                 android:padding="2dp"
                 android:background="#a483d20b"
                 android:text="Map"
@@ -63,7 +63,7 @@
             android:layout_height="wrap_content">
 
             <Button
-                android:layout_width="232dp"
+                android:layout_width="183dp"
                 android:layout_height="wrap_content"
                 android:background="#a4cc310e"
                 android:text="Make Order"
@@ -79,7 +79,7 @@
                 android:gravity="right"
                 android:foregroundGravity="right"
                 android:layout_weight="0.83"
-                android:textSize="30dp"
+                android:textSize="24sp"
                 android:id="@+id/shoppingCarOrderPrice"
                 android:textStyle="normal|bold" />
 

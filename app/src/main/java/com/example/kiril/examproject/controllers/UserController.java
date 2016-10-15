@@ -41,15 +41,19 @@ public class UserController extends BaseController implements IUser {
 
     @Override
     public void register(String name, String password, String confirmPassword) {
-        boolean registerResult = mLoginManager.register(name, password, confirmPassword);
-
-        if (registerResult == true){
-            mLoginManager.login(name, password);
-            mFragmentController.dettachFragment(mRegisterFragment);
-        }else{
-            Toast.makeText(mActivity, "The registration process is unsuccessfuly, please try again to register!", Toast.LENGTH_LONG).show();
-            mFragmentController.dettachFragment(mRegisterFragment);
+        try{
+            boolean registerResult = mLoginManager.register(name, password, confirmPassword);
+            if (registerResult == true){
+                mLoginManager.login(name, password);
+                mFragmentController.dettachFragment(mRegisterFragment);
+            }else{
+                Toast.makeText(mActivity, "The registration process is unsuccessfuly, please try again to register!", Toast.LENGTH_LONG).show();
+                mFragmentController.dettachFragment(mRegisterFragment);
+            }
+        }catch (IllegalArgumentException e){
+            Toast.makeText(mActivity, "The registration process is unsuccessfuly, " + e.getMessage(), Toast.LENGTH_LONG).show();
         }
+
     }
 
     public void logOut(){

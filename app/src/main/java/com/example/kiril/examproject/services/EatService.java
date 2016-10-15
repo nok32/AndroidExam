@@ -26,6 +26,7 @@ public class EatService extends Service {
     private static final String BREAKFAST = "breakfast";
     private static final String LUNCH = "lunch";
     private static final String SUPPER = "supper";
+    private static final int TIME_ZONE_DIFFERENCE = 3;
 
     @Nullable
     @Override
@@ -37,7 +38,6 @@ public class EatService extends Service {
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        // TODO: 13/10/2016 clean code from comentars
         Toast.makeText(this, "Lunch time notification is on", Toast.LENGTH_SHORT).show();
 
         Intent iBreakfast = new Intent(getApplicationContext(), NotificationReceiverBreakfast.class);
@@ -49,7 +49,7 @@ public class EatService extends Service {
         Intent iSupper = new Intent(getApplicationContext(), NotificationReceiverSupper.class);
         iSupper.setAction("SUPPER");
 
-        setLunchType(8, iBreakfast);
+        setLunchType(8 - TIME_ZONE_DIFFERENCE, iBreakfast);
         setLunchType(12, iLunch);
         setLunchType(19, iSupper);
 
@@ -67,25 +67,16 @@ public class EatService extends Service {
         Calendar firingCal= Calendar.getInstance();
         Calendar currentCal = Calendar.getInstance();
 
-        long currentTimeTimezone = System.currentTimeMillis();
-        int edtOffset = TimeZone.getTimeZone("EEST").getOffset(currentTimeTimezone);
-        int gmtOffset = TimeZone.getTimeZone("GMT").getOffset(currentTimeTimezone);
-        int hourDifference = (gmtOffset - edtOffset) / (1000 * 60 * 60);
-
-        firingCal.set(Calendar.HOUR_OF_DAY, hour - hourDifference); // At the hour you wanna fire
-        firingCal.set(Calendar.MINUTE, 0); // Particular minute
-        firingCal.set(Calendar.SECOND, 0); // particular second
+        firingCal.set(Calendar.HOUR_OF_DAY, hour);
+        firingCal.set(Calendar.MINUTE, 0);
+        firingCal.set(Calendar.SECOND, 0);
 
         long intendedTime = firingCal.getTimeInMillis();
         long currentTime = currentCal.getTimeInMillis();
 
         if(intendedTime >= currentTime){
-            // you can add buffer time too here to ignore some small differences in milliseconds
-            // set from today
             alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, intendedTime, AlarmManager.INTERVAL_DAY, pIntent);
         } else{
-            // set from next day
-            // you might consider using calendar.add() for adding one day to the current day
             firingCal.add(Calendar.DAY_OF_MONTH, 1);
             intendedTime = firingCal.getTimeInMillis();
 

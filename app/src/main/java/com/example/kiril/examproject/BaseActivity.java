@@ -21,8 +21,7 @@ public class BaseActivity extends AppCompatActivity {
     protected RegisterFragment mRegisterFragment;
     protected UserController mUserController;
     protected FragmentController mFragmentController;
-    protected Intent eatServiceIntent;
-    MenuItem mEatServiceRun;
+    protected MenuItem mEatServiceRun;
     protected FoodStoreApplication app;
 
     @Override
@@ -32,11 +31,6 @@ public class BaseActivity extends AppCompatActivity {
 
         mEatServiceRun = menu.findItem(R.id.checkable_menu);
         mEatServiceRun.setChecked(app.isChecked());
-        eatServiceIntent = new Intent(this, EatService.class);
-        if (app.isChecked() && !app.isServiceRunning()){
-            startService(eatServiceIntent);
-            app.setServiceRunning(true);
-        }
 
         return true;
     }
@@ -63,10 +57,10 @@ public class BaseActivity extends AppCompatActivity {
                 mEatServiceRun.setChecked(app.isChecked());
 
                 if (app.isChecked()&& !app.isServiceRunning()){
-                    startService(eatServiceIntent);
+                    startService(app.getEatServiceIntent());
                     app.setServiceRunning(true);
                 }else if(!app.isChecked()){
-                    stopService(eatServiceIntent);
+                    stopService(app.getEatServiceIntent());
                     app.setServiceRunning(false);
                 }
             default:

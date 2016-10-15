@@ -50,6 +50,6 @@ public class FoodFragment extends Fragment {
         mFoodTitle.setText(f.get_title());
         mFoodInfo.setText(f.get_info());
         mRegularPortion.setText("Regular portion: " + String.format("%.2f", f.get_regularPortionPrice()) + "$");
-        mLargePortion.setText("Large portion" + String.format("%.2f" , f.get_largePortionPrice()) + "$");
+        mLargePortion.setText("Large portion: " + String.format("%.2f" , f.get_largePortionPrice()) + "$");
     }
 }
